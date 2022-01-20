@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+    <style>
+
+        body{
+            display: flex;
+            position: absolute;
+            padding-top: 0;
+            background-color: rgb(184, 175, 175);
+            padding-top: 0;
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
+            flex-direction: column ;
+            padding: 4px;
+            justify-content: center;
+            align-self: center;
+            align-items: center;
+            
+        }
+
+        form{
+            display: flex;
+            
+            flex-direction: column;
+            border-radius: 20px;
+            background-color: rgb(188, 245, 226);
+            padding: 10px;
+            padding-top: 0;
+            margin: 0;
+            height: 500px;
+            width: 300px;
+            justify-content: center;
+        }
+
+        button{
+            display: flex;
+            border-radius: 4px;
+            background-color: rgb(38, 226, 226);
+            width: 35%;
+            justify-content: center;
+            position: relative;
+            align-self: center;
+            align-items: flex-end;
+            cursor: pointer;
+        }
+
+        input{
+            outline: white;
+            border-radius: 3px;
+            border: 1px solid black;
+            height: 20px;
+            
+        }
+        #rating{
+            outline: none;
+            border: 1px solid black;
+            border-radius: 3px;
+            height: 20px;
+            
+            
+        }
+
+        
+
+        #heading{
+            display: flex;
+            position: relative;
+            background-color: rgb(38, 226, 226);
+            border-radius: 5px;
+            align-items: center;
+            left: 50%;
+            justify-content: center;
+            transform: translateX(-50%);
+            border-top-left-radius: 4px;
+	        border-top-right-radius: 4px;
+            bottom: 10px;
+            width: 100%;
+            height: 40px;
+            padding-top: 0;
+
+            
+        }
+        #totalAmount, #tipAmount{
+            background-color: white;
+        }
+
+        #btn:hover{
+            background-color: rgb(255, 255, 255);
+        }
+
+        #message{
+            font-family:Arial, Helvetica, Arial, Helvetica, sans-serif;
+            color: rgb(253, 0, 0);
+            background-color: white;
+            
+        }
+
+
+        @media only screen and (max-width: 600px){
+            .form{
+                width: 80%;
+               
+            }
+        }
+
+
+        @media only screen and (max-width: 1000px){
+            .form{
+                width: 80%;
+               
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h4 id="message"></h4>
+    
+    <Form class="form">
+        
+    <h3 id="heading">TIP CALCULATOR</h3>
+    <label for="text" class="bill">Bill Amount </label>
+    <br>
+    <input type="number" id="amount" placeholder="Enter Bill Amount (₹)" required>
+    <br>
+   
+    <label for="">Tip</label>
+    <br>
+    <input type="number" id="tip" placeholder="Enter Tip in %">
+    <br>
+    <label for="">Tip Amount</label>
+    <br>
+    <input type="number" id="tipAmount" placeholder="Tip Amount" disabled>
+    <br>
+    
+    <br>
+    <label for="number">Total Bill Amount</label>
+    <br>
+    <input type="number" id="totalAmount" placeholder="Total Amount" disabled>
+
+    <br>
+   
+    <button id="btn"> Calculate </button>
+  </Form>
+
+  <script>
+      document.getElementById("btn").addEventListener("click",function(e){
+        e.preventDefault();
+    let Amount = document.getElementById("amount").valueAsNumber;
+    //    console.log(typeof document.getElementById("amount").valueAsNumber)
+    let Tip = document.getElementById("tip").valueAsNumber;
+    let TipAmount = Amount * ( Tip / 100 );
+    document.getElementById("tipAmount").value = TipAmount
+    let TotalAmount = Amount + (TipAmount);
+    document.getElementById("totalAmount").value = Amount + TipAmount;
+
+    // message should diasapper after 3 sec.
+    document.getElementById('message').innerText = "Successful";
+    const message = document.getElementById('message');
+    setTimeout(() => {
+        message.textContent = '';
+    }, 3000)
+})
+</script>
+
+</body>
+
+
+</html>
