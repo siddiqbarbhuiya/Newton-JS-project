@@ -39,15 +39,19 @@
         }
 
         button{
-            display: flex;
-            border-radius: 4px;
-            background-color: rgb(38, 226, 226);
-            width: 35%;
-            justify-content: center;
+            border-radius: 5px;
+            background-color: #273443;
+            color: aliceblue;
+            font-weight: 800;
+            width: 40%;
+            height: 30px;
+            display: inline;
             position: relative;
-            align-self: center;
-            align-items: flex-end;
+            left: 20px;
+            margin-right: 20px;
             cursor: pointer;
+            border: none;
+            outline: none;
         }
 
         input{
@@ -90,31 +94,19 @@
             background-color: white;
         }
 
-        #btn:hover{
-            background-color: rgb(255, 255, 255);
+        button:hover{
+            background-color: rgb(255, 191, 191);
+            color:rgb(34, 11, 11);
+            font-size: 15px;
+            font-weight: 700;
+
         }
 
         #message{
             font-family:Arial, Helvetica, Arial, Helvetica, sans-serif;
-            color: rgb(253, 0, 0);
+            color: rgb(34, 11, 11);
             background-color: white;
             
-        }
-
-
-        @media only screen and (max-width: 600px){
-            .form{
-                width: 80%;
-               
-            }
-        }
-
-
-        @media only screen and (max-width: 1000px){
-            .form{
-                width: 80%;
-               
-            }
         }
     </style>
 </head>
@@ -143,14 +135,13 @@
     <label for="number">Total Bill Amount</label>
     <br>
     <input type="number" id="totalAmount" placeholder="Total Amount" disabled>
-
     <br>
-   
-    <button id="btn"> Calculate </button>
+   <p><button id="btn" onclick="clickMe()"> Calculate </button>
+    <button id="resultBtn" onclick="reseltData()"> Reset </button></p>
   </Form>
 
   <script>
-      document.getElementById("btn").addEventListener("click",function(e){
+      document.getElementById("btn").addEventListener("click",function clickMe(e){
         e.preventDefault();
     let Amount = document.getElementById("amount").valueAsNumber;
     //    console.log(typeof document.getElementById("amount").valueAsNumber)
@@ -161,12 +152,19 @@
     document.getElementById("totalAmount").value = Amount + TipAmount;
 
     // message should diasapper after 3 sec.
-    document.getElementById('message').innerText = "Successful";
+        if(!TotalAmount){
+            return alert("Please enter the bill amount");
+        } else {
+            document.getElementById('message').innerText = "Successful";
     const message = document.getElementById('message');
     setTimeout(() => {
         message.textContent = '';
     }, 3000)
-})
+        }
+});
+function reseltData() {
+    document.getElementById('form').reset();
+}
 </script>
 
 </body>
